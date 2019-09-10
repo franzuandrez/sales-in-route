@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
 
-    @include('components.search')
-    <div class="content">
+
+    <div id="content">
         @include('registers.companies.ajax')
     </div>
 @endsection
