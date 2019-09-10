@@ -15,3 +15,5 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
+Route::get('/registers/companies','CompanyController@index')->name('register.company.index');
+
