@@ -85,12 +85,7 @@
     $('.ui.dropdown')
         .dropdown()
     ;
-    $('.ui.search')
-        .search({
-            type: 'category'
-        })
 
-    ;
 
     $(document)
         .ready(function() {
@@ -119,6 +114,7 @@
     ;
 
 </script>
+@yield('scripts')
 </body>
 
 </html>
