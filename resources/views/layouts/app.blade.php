@@ -20,7 +20,7 @@
 <body>
 <div class="ui  inverted menu">
     <div class="ui  container ">
-        <a class="item">
+        <a class="item" href="{{url('/')}}">
             <img src="https://img.icons8.com/bubbles/50/000000/business-man-product-box.png">
         </a>
         <div class="ui dropdown item">
