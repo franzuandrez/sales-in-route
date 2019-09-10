@@ -8,6 +8,7 @@
                         onkeydown="if(event.keyCode == 13)
                             ajaxLoad('{{Request::url()}}?search='+this.value+'&sort={{$sort}}&field={{$sortField}} ')"
                         type="text"
+                        value="{{$search}}"
                         placeholder="Buscar...">
 
                     <button class="ui icon button"
