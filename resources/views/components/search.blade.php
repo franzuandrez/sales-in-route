@@ -4,6 +4,7 @@
             <div class="ui category search">
                 <div class="ui action input">
                     <input
+                        id="search-text"
                         class=""
                         onkeydown="if(event.keyCode == 13)
                             ajaxLoad('{{Request::url()}}?search='+this.value+'&sort={{$sort}}&field={{$sortField}} ')"
@@ -12,7 +13,7 @@
                         placeholder="Buscar...">
 
                     <button class="ui icon button"
-                        onclick="ajaxLoad('{{Request::url()}}?search='+this.value+'&sort={{$sort}}&field={{$sortField}} ')">
+                        onclick="ajaxLoad('{{Request::url()}}?search='+document.getElementById('search-text').value+'&sort={{$sort}}&field={{$sortField}} ')">
                         <i class="icon search"></i>
                     </button>
                     <button class="ui icon button"
