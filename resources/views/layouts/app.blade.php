@@ -67,6 +67,8 @@
 </div>
 <div class="ui main  container">
 
+    @include('components.success-alert')
+    @include('components.error-alert')
     @yield('content')
 </div>
 
