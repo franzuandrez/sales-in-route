@@ -2,8 +2,8 @@
     <div class="ui success message">
         <i class="close icon"></i>
         <div class="header">
-            {{$message}}
+        Operación Exitosa
         </div>
-        <p>You may now log-in with the username you have chosen</p>
+        <p>{{$message}}</p>
     </div>
 @endif
