@@ -16,4 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('/registers/companies','CompanyController@index')->name('register.company.index');
+Route::get('registers/companies/create','CompanyController@create')->name('register.company.create');
 

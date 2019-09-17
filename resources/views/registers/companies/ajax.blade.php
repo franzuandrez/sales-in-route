@@ -2,9 +2,11 @@
 <table class="ui     celled table">
     <thead>
     <th colspan="4">
-        <div class="ui small float-right teal labeled icon button ">
-            <i class="plus icon"></i> Nuevo
-        </div>
+        <a href="{{url('registers/companies/create')}}">
+            <div class="ui small float-right teal labeled icon button">
+                <i class="plus icon"></i> Nuevo
+            </div>
+        </a>
     </th>
     <tr>
         <th>
