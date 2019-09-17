@@ -26,8 +26,22 @@
     </tr>
     </thead>
     <tbody>
-    @component('components.empty-table',['total_columns'=>4])
-    @endcomponent
+        @if($companies->isEmpty())
+        @component('components.empty-table',['total_columns'=>4])
+         @endcomponent
+        @else
+        @foreach($companies as $company)
+        
+        <tr>
+            <td>{{$company->descripcion}}</td>
+            <td>{{$company->direccion_planta}}</td>
+        </tr>
+
+        @endforeach
+     
+      
+        @endif
+  
     </tbody>
 
     </tfoot>
