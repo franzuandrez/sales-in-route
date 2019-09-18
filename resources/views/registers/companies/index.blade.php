@@ -1,7 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
-
     <div id="content">
         @include('registers.companies.ajax')
     </div>
