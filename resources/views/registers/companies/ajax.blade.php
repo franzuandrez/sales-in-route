@@ -21,16 +21,35 @@
         </th>
         <th>
             @include('components.sort-table',[
-                          'field'=>'Encargado',
-                          'titulo'=>'Encargado'])
+                          'field'=>'pais',
+                          'titulo'=>'PAis'])
         </th>
-        <th></th>
+        <th>
+
+        </th>
     </tr>
     </thead>
     <tbody>
-    @component('components.empty-table',['total_columns'=>4])
-    @endcomponent
+    @if(true)
+        <tr>
+            <td>Sucursal 1</td>
+            <td>Guatemala</td>
+            <td>Guatemala</td>
+            <td>
+                <button class="ui teal icon basic button"
+                    onclick="javascript:verDetalle(1)"
+                >
+                    <i class="eye icon"></i>
+                </button>
+            </td>
+        </tr>
+        @include('registers.companies.show',['id'=>1])
+    @else
+        @component('components.empty-table',['total_columns'=>4])
+        @endcomponent
+    @endif
     </tbody>
-
     </tfoot>
 </table>
+
+
