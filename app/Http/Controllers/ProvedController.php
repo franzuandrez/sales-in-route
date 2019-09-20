@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use DB;
-class CompanyController extends Controller
-{
-    //
 
+class ProvedController extends Controller
+{
+    
     public function index(Request $request){
 
 
@@ -16,16 +15,16 @@ class CompanyController extends Controller
         $sort = $request->get('sort') == null ? 'desc' : ($request->get('sort'));
         $sortField = $request->get('field') == null ? 'username' : $request->get('field');
 
-        $companies = DB::table('empresa')
+        $Proveedores= DB::table('proveedores')
         ->get();
 
         
        
 
         if($request->ajax()){
-            return view('registers.companies.ajax',compact('search','sort','sortField','companies'));
+            return view('registers.Proveedores.ajax',compact('search','sort','sortField','Proveedores'));
         }else{
-            return view('registers.companies.index',compact('search','sort','sortField','companies'));
+            return view('registers.Proveedores.index',compact('search','sort','sortField','Proveedores'));
 
         }
 
@@ -36,6 +35,9 @@ class CompanyController extends Controller
 
 
 
-        return view('registers.companies.create');
+        return view('registers.Proveedores.create');
     }
 }
+    
+    
+
