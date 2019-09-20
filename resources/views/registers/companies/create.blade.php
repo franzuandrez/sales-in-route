@@ -9,6 +9,8 @@
             <label>Direccion</label>
             <input type="text" name="direccion" placeholder="Direccion">
         </div>
+
+
         <button class="ui button icon primary" type="submit">
             <i class="icon check"></i>
             Guardar

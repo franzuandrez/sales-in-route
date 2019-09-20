@@ -28,12 +28,13 @@
             Registro
             <i class="dropdown icon"></i>
             <div class="menu">
-                <a class="item" href="{{route('register.company.index')}}"> <i class="warehouse icon"></i>
+                <a class="item" href="{{route('register.company.index')}}" > <i class="warehouse icon"></i>
                     Sucursales</a>
-                <a class="item"><i class="boxes icon"></i>Productos</a>
-                <a class="item"><i class="users icon"></i>Proveedores</a>
-                <a class="item"><i class="child icon"></i> Clientes</a>
+                <a class="item"href="{{route('register.product.index')}}" > <i class="boxes icon"></i>Productos</a>
+                <a class="item"   href="{{route('register.Proved.index')}}" ><i class="users icon"></i>Proveedores</a>
+                <a class="item"  href="{{route('register.Client.index')}}"     ><i class="child icon"></i> Clientes</a>
                 <a class="item"><i class="list icon"></i>Categoria Proveedores</a>
+            
             </div>
         </div>
         <div class="ui dropdown item">
@@ -49,11 +50,11 @@
             Sistema
             <i class="dropdown icon"></i>
             <div class="menu">
-                <a class="item"><i class=" users icon"></i>
+                <a class="item"   href="{{route('register.Users.index')}}"    ><i class=" users icon"></i>
                     Usuarios</a>
             </div>
         </div>
-        <div class="right menu">
+        <div class="right menu">s
             <div class="ui dropdown item">
                 <img src="https://semantic-ui.com/images/avatar/large/steve.jpg">
                 <i class="dropdown icon"></i>
