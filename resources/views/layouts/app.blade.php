@@ -10,7 +10,7 @@
     <link href="{{asset('components/dropdown.min.css')}}" rel="stylesheet">
     <link href="{{asset('components/search.min.css')}}" rel="stylesheet">
     <link href="{{asset('components/icon.min.css')}}" rel="stylesheet">
-
+    <link href="{{asset('components/modal.min.css')}}" rel="stylesheet">
 
     <link rel='stylesheet prefetch'
           href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/icon.css'>
@@ -81,6 +81,7 @@
 <script src="{{asset('js/semantic.min.js')}}"></script>
 <script src="{{asset('components/dropdown.min.js')}}"></script>
 <script src="{{asset('components/search.min.js')}}"></script>
+<script src="{{asset('components/modal.min.js')}}"></script>
 
 <script src="{{asset('js/fontawesome.min.js')}}"></script>
 <script>
