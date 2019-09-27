@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 class CompanyController extends Controller
 {
     //
@@ -18,7 +18,7 @@ class CompanyController extends Controller
 
         $companies = DB::table('empresa')
         ->get();
-       
+
 
         if($request->ajax()){
             return view('registers.companies.ajax',compact('search','sort','sortField','companies'));
