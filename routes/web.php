@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/registers/companies','CompanyController@index')->name('register.company.index');
 Route::get('registers/companies/create','CompanyController@create')->name('register.company.create');
 
+/*CLIENTES*/
+Route::post('registers/clientes/create','ClientesController@crear_cliente')->name('register.cliente.create');
+Route::post('registers/clientes/mostrar','ClientesController@mostrar')->name('register.cliente.mostrar');
+

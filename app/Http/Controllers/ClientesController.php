@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ClientesModel;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -26,6 +27,33 @@ class ClientesController extends Controller
         return redirect()
             ->route('register.company.index')
             ->with('success','Proveedor creado exitosamente');
+    }
+
+    public function mostrar(Request $request){
+
+        try{
+            $busqueda = ($request->get('busqueda') == null) ?"":request()->get('busqueda');
+
+            $cliente =    ClientesModel::all();
+
+
+            /*ClientesModel::where(function ( $query ) use ($busqueda) {
+
+            $query->where('entes.nit','LIKE','%'.$busqueda.'%')
+                    ->orWhere('clientes.nombre_comercial','LIKE','%'.$busqueda.'%');
+            });*/
+
+            $user = DB::table('clientes')->where('razon_social', 'alvaro sa')->first();
+
+            echo $user->latitud;
+           # return response()->json($cliente);
+
+        }catch (\Exception $ex){
+
+
+
+
+        }
     }
 
     }
