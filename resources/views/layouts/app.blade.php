@@ -18,7 +18,7 @@
 
 </head>
 <body>
-<div class="ui  inverted menu">
+<div class="ui red inverted menu">
     <div class="ui  container ">
         <a class="item" href="{{url('/')}}">
             <img src="https://img.icons8.com/bubbles/50/000000/business-man-product-box.png">
@@ -33,6 +33,7 @@
                 <a class="item"href="{{route('register.product.index')}}" > <i class="boxes icon"></i>Productos</a>
                 <a class="item"   href="{{route('register.Proved.index')}}" ><i class="users icon"></i>Proveedores</a>
                 <a class="item"  href="{{route('register.Client.index')}}"     ><i class="child icon"></i> Clientes</a>
+               
                 <a class="item"><i class="list icon"></i>Categoria Proveedores</a>
             
             </div>

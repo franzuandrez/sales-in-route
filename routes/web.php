@@ -30,4 +30,10 @@ Route::get('registers/Clientes/index','ClientController@index')->name('register.
 
 Route::get('registers/Usuarios/index','UsersController@index')->name('register.Users.index');
 
+Route::get('registers/Libros/index','LibrosController@index')->name('register.Libros.index');
+Route::get('registers/Libros/create','LibrosController@create')->name('register.Libros.create');
+
+Route::get('registers/Prestamos/index','PrestamosController@index')->name('register.Prestamos.index');
+Route::get('registers/Prestamos/create','PrestamosController@create')->name('register.Prestamos.create');
+
 
