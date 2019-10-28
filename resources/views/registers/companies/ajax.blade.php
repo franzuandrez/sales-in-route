@@ -2,7 +2,7 @@
 <table class="ui     celled table">
     <thead>
     <th colspan="4">
-        <a href="{{url('registers/companies/create')}}">
+        <a href="{{route('register.company.create')}}">
             <div class="ui small float-right teal labeled icon button">
                 <i class="plus icon"></i> Nuevo
             </div>
@@ -32,11 +32,11 @@
         @component('components.empty-table',['total_columns'=>4])
          @endcomponent
         @else
-        @foreach($companies as $company)
+        @foreach($companies as $Company)
         
         <tr>
-            <td>{{$company->descripcion}}</td>
-            <td>{{$company->direccion_planta}}</td>
+            <td>{{$Company->descripcion}}</td>
+            <td>{{$Company->direccion_planta}}</td>
         </tr>
 
         @endforeach
@@ -48,3 +48,4 @@
 
     </tfoot>
 </table>
+

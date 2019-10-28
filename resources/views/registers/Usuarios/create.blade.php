@@ -6,10 +6,14 @@
             <input type="text" name="nombre" placeholder="Nombre">
         </div>
         <div class="field">
-            <label>Direccion</label>
+            <label>ISAAC</label>
             <input type="text" name="direccion" placeholder="Direccion">
         </div>
 
+        <div class="field">
+            <label>Encargado</label>
+            <input type="text" name="direccion" placeholder="Direccion">
+        </div>
 
         <button class="ui button icon primary" type="submit">
             <i class="icon check"></i>
@@ -25,3 +29,8 @@
         </a>
     </form>
 @endsection
+
+
+
+
+
