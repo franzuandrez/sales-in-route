@@ -22,10 +22,10 @@ class CreateRolesTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id');
-            $table->string('name', 25)->nullable()->default(null);
-            $table->text('descripcion')->nullable()->default(null);
-            $table->integer('created_by')->nullable()->default(null);
+            $table->integer('id')->autoIncrement();
+            $table->string('name', 25)->nullable();
+            $table->text('descripcion')->nullable();
+            $table->integer('created_by')->nullable();
             $table->nullableTimestamps();
         });
     }

@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePermissionsTable extends Migration
+class CreateEmpresaTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'permissions';
+    public $tableName = 'empresa';
 
     /**
      * Run the migrations.
-     * @table permissions
+     * @table empresa
      *
      * @return void
      */
@@ -22,14 +22,16 @@ class CreatePermissionsTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id');
-            $table->string('name', 45)->nullable()->default(null);
-            $table->char('isMenu', 1)->nullable()->default(null);
-            $table->integer('id_Menu')->nullable()->default(null);
-            $table->integer('order')->nullable()->default(null);
-            $table->string('display_name', 45)->nullable()->default(null);
-            $table->string('icon', 45)->nullable()->default(null);
-            $table->nullableTimestamps();
+            $table->integer('id_empresa')->primary();
+            $table->integer('id_pais')->nullable();
+            $table->string('descripcion', 45)->nullable();
+            $table->text('direccion_planta')->nullable();
+
+            $table->index(["id_pais"], 'fk_id_pais_idx');
+
+
+            $table->foreign('id_pais', 'fk_id_pais_idx')
+                ->references('id_pais')->on('pais');
         });
     }
 

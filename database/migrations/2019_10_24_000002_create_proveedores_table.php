@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEmpresaTable extends Migration
+class CreateProveedoresTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'empresa';
+    public $tableName = 'proveedores';
 
     /**
      * Run the migrations.
-     * @table empresa
+     * @table proveedores
      *
      * @return void
      */
@@ -22,10 +22,10 @@ class CreateEmpresaTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id_empresa');
-            $table->integer('id_pais')->nullable()->default(null);
-            $table->string('descripcion', 45)->nullable()->default(null);
-            $table->text('direccion_planta')->nullable()->default(null);
+            $table->integer('id_proveedor')->autoIncrement();
+            $table->string('razon_social', 50)->nullable();
+            $table->string('nit', 15)->nullable();
+            $table->string('direccion_planta', 50)->nullable();
         });
     }
 

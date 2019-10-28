@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoriaClientesTable extends Migration
+class CreatePermissionsTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'categoria_clientes';
+    public $tableName = 'permissions';
 
     /**
      * Run the migrations.
-     * @table categoria_clientes
+     * @table permissions
      *
      * @return void
      */
@@ -22,9 +22,13 @@ class CreateCategoriaClientesTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id_categoria_cliente');
-            $table->string('descripcion', 50)->nullable()->default(null);
-            $table->integer('created_by')->nullable()->default(null);
+            $table->integer('id')->autoIncrement();
+            $table->string('name', 45)->nullable();
+            $table->char('isMenu', 1)->nullable();
+            $table->integer('id_Menu')->nullable();
+            $table->integer('order')->nullable();
+            $table->string('display_name', 45)->nullable();
+            $table->string('icon', 45)->nullable();
             $table->nullableTimestamps();
         });
     }

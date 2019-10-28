@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserHasRolesTable extends Migration
+class CreateRolesHasPermissionsTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'user_has_roles';
+    public $tableName = 'roles_has_permissions';
 
     /**
      * Run the migrations.
-     * @table user_has_roles
+     * @table roles_has_permissions
      *
      * @return void
      */
@@ -22,8 +22,19 @@ class CreateUserHasRolesTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->integer('id_user');
             $table->integer('id_rol');
+            $table->integer('id_permission');
+
+            $table->index(["id_rol"], 'fk_id_rol_idx');
+
+            $table->index(["id_permission"], 'fk_id_permission_idx');
+
+
+            $table->foreign('id_rol', 'fk_has_permision_id_rol_idx')
+                ->references('id')->on('roles');
+
+            $table->foreign('id_permission', 'fk_has_id_permission_idx')
+                ->references('id')->on('permissions');
         });
     }
 

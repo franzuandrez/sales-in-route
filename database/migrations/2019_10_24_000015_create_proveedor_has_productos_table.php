@@ -25,6 +25,17 @@ class CreateProveedorHasProductosTable extends Migration
             $table->integer('id_proveedor');
             $table->integer('id_producto');
             $table->decimal('costo_compra', 18, 2);
+
+            $table->index(["id_producto"], 'fk_id_producto_idx');
+
+            $table->index(["id_proveedor"], 'fk_id_proveedor_idx');
+
+
+            $table->foreign('id_producto', 'fk_proveedores_has_producto_id_producto_idx')
+                ->references('id_producto')->on('productos');
+
+            $table->foreign('id_proveedor', 'fk_proveedores_has_producto_id_proveedor_idx')
+                ->references('id_proveedor')->on('proveedores');
         });
     }
 

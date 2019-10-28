@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRolesHasPermissionsTable extends Migration
+class CreateUnidadesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'roles_has_permissions';
+    public $tableName = 'unidades';
 
     /**
      * Run the migrations.
-     * @table roles_has_permissions
+     * @table unidades
      *
      * @return void
      */
@@ -22,8 +22,10 @@ class CreateRolesHasPermissionsTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->integer('id_rol');
-            $table->integer('id_permission');
+            $table->integer('id_unidad')->autoIncrement();
+            $table->string('descripcion', 50)->nullable();
+            $table->integer('created_by')->nullable();
+            $table->nullableTimestamps();
         });
     }
 

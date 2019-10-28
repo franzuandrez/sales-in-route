@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUnidadesTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'unidades';
+    public $tableName = 'users';
 
     /**
      * Run the migrations.
-     * @table unidades
+     * @table users
      *
      * @return void
      */
@@ -22,9 +22,10 @@ class CreateUnidadesTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id_unidad');
-            $table->string('descripcion', 50)->nullable()->default(null);
-            $table->integer('created_by')->nullable()->default(null);
+            $table->integer('id_user')->autoIncrement();
+            $table->string('username', 45)->nullable();
+            $table->string('email', 45)->nullable();
+            $table->char('isActive', 1)->nullable();
             $table->nullableTimestamps();
         });
     }

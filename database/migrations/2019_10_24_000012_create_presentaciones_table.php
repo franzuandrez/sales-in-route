@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEmpresaHasUsersTable extends Migration
+class CreatePresentacionesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'empresa_has_users';
+    public $tableName = 'presentaciones';
 
     /**
      * Run the migrations.
-     * @table empresa_has_users
+     * @table presentaciones
      *
      * @return void
      */
@@ -22,8 +22,16 @@ class CreateEmpresaHasUsersTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->integer('id_empresa');
-            $table->integer('id_user');
+            $table->integer('id_presentacion')->autoIncrement();
+            $table->string('descripcion', 50)->nullable();
+            $table->integer('created_by')->nullable();
+
+            $table->index(["created_by"], 'fk_id_user_idx');
+            $table->nullableTimestamps();
+
+
+            $table->foreign('created_by', 'fk_presentaciones_id_user_idx')
+                ->references('id_user')->on('users');
         });
     }
 

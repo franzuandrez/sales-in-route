@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePresentacionesTable extends Migration
+class CreateUserHasRolesTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'presentaciones';
+    public $tableName = 'user_has_roles';
 
     /**
      * Run the migrations.
-     * @table presentaciones
+     * @table user_has_roles
      *
      * @return void
      */
@@ -22,10 +22,19 @@ class CreatePresentacionesTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id_presentacion');
-            $table->string('descripcion', 50)->nullable()->default(null);
-            $table->integer('created_by')->nullable()->default(null);
-            $table->nullableTimestamps();
+            $table->integer('id_user');
+            $table->integer('id_rol');
+
+            $table->index(["id_rol"], 'fk_id_rol_idx');
+
+            $table->index(["id_user"], 'fk_id_user_idx');
+
+
+            $table->foreign('id_user', 'fk_id_user_idx')
+                ->references('id_user')->on('users');
+
+            $table->foreign('id_rol', 'fk_id_rol_idx')
+                ->references('id')->on('roles');
         });
     }
 

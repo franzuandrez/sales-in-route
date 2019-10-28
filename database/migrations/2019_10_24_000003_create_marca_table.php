@@ -4,17 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePaisTable extends Migration
+class CreateMarcaTable extends Migration
 {
     /**
      * Schema table name to migrate
      * @var string
      */
-    public $tableName = 'pais';
+    public $tableName = 'marca';
 
     /**
      * Run the migrations.
-     * @table pais
+     * @table marca
      *
      * @return void
      */
@@ -22,10 +22,10 @@ class CreatePaisTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id_pais');
-            $table->string('descripcion', 45)->nullable()->default(null);
-            $table->string('codigo_postal', 15)->nullable()->default(null);
-            $table->char('isActive', 1)->nullable()->default(null);
+            $table->integer('id_marca')->primary();
+            $table->string('descripcion', 45)->nullable();
+            $table->integer('created_by')->nullable();
+            $table->nullableTimestamps();
         });
     }
 
