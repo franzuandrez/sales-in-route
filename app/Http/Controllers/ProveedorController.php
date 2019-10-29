@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Proveedor;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class ProveedorController extends Controller
@@ -18,14 +19,14 @@ class ProveedorController extends Controller
         $sort = $request->get('sort') == null ? 'desc' : ($request->get('sort'));
         $sortField = $request->get('field') == null ? 'username' : $request->get('field');
 
-        $empres_has_user = DB::table('proveedor_has_productos')
+        $Proveedores = DB::table('proveedores')
             ->get();
 
 
         if($request->ajax()){
-            return view('registers.preveedorhasproductos.ajax',compact('search','sort','sortField','cat_cliente'));
+            return view('registers.proveedores.index',compact('search','sort','sortField','Proveedores'));
         }else{
-            return view('registers.proveedorhasproductos.index',compact('search','sort','sortField','cat_cliente'));
+            return view('registers.proveedores.index',compact('search','sort','sortField','Proveedores'));
 
         }
 
@@ -40,7 +41,7 @@ class ProveedorController extends Controller
      */
     public function create()
     {
-        return view('proveedorhasproductos.create');
+        return view('registers.proveedores.create');
     }
 
     /**
@@ -52,15 +53,16 @@ class ProveedorController extends Controller
     public function store(Request $request)
     {
         #  try{
-        $proveedor_has_productos = new ProveedorHasProducto();
-        $proveedor_has_productos->id_proveedor      =   $request->get('id_proveedor');
-        $proveedor_has_productos->id_producto       =   $request->get('id_producto');
-        $proveedor_has_productos->costo_compras     =   $request->get('costo_compras');
+        $proveedor = new Proveedor();
+        $proveedor->razon_social                =   $request->get('razon_social');
+        $proveedor->nit                         =   $request->get('nit');
+        $proveedor->direccion_planta            =   $request->get('direccion_planta');
 
 
-        $proveedor_has_productos->save();
+
+        $proveedor->save();
         return redirect()
-            ->route('porveedorhascompras.index')
+            ->route('Proveedor.Index')
             ->with('success','creado exitosamente');
         #  }
         #catch (\Exception  $e){
@@ -92,16 +94,16 @@ class ProveedorController extends Controller
 
         try{
 
-            $proveedorhasproducto= ProveedorHasProducto::findOrFail($id);
+            $proveedores= Proveedor::findOrFail($id);
 
-            return view('proveedorhasproducto.edit',compact('proveedorhasproducto'));
+            return view('registers.proveedores.edit',compact('proveedores'));
 
         }catch (\Exception $ex){
 
 
             return redirect()
-                ->route('proveedorhasproducto.index')
-                ->route('proveedorhasproducto.index')
+                ->route('Proveedor.Index')
+
                 ->withErrors(['no encontrada']);
 
         }
@@ -118,21 +120,20 @@ class ProveedorController extends Controller
     public function update(Request $request, $id)
     {
         try{
-            $proveedor_has_productos= ProveedorHasProducto::findOrFail($id);
-            $proveedor_has_productos->id_proveedor      =   $request->get('id_proveedor');
-            $proveedor_has_productos->id_producto       =   $request->get('id_producto');
-            $proveedor_has_productos->costo_compras     =   $request->get('costo_compras');
-            $proveedor_has_productos->save();
-            $proveedor_has_productos->update();
+            $proveedor= Proveedor::findOrFail($id);
+            $proveedor->razon_social                =   $request->get('razon_social');
+            $proveedor->nit                         =   $request->get('nit');
+            $proveedor->direccion_planta            =   $request->get('direccion_planta');
+            $proveedor->save();
 
             return redirect()
-                ->route('proveedorhasproducto.index')
+                ->route('Proveedor.Index')
                 ->with('success','  modificado exitosamente');
 
         } catch(\Exception $ex){
 
             return redirect()
-                ->route('proveedorhasproducto.index')
+                ->route('Proveedor.Index')
                 ->withErrors(['Algo salio mal, por favor vuelva a intentarlo más tarde']);
         }
 

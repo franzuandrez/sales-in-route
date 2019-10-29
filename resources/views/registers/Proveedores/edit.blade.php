@@ -8,27 +8,27 @@
             <div class="ui segments">
                 <div class="ui secondary segment">
                     <h4 align="center">
-                        REGISTRO DE PRODUCTOS
+                        EDITAR PROVEEDOR
                     </h4>
 
                 </div>
 
                 <div class="ui primary segment">
 
-                    {!! Form::open(['route'=>'Register.Proveedor.Store','class'=> 'ui form', 'method'=>'post'] ) !!}
+                    {!! Form::open(['route'=>['Register.Proveedor.Update',$proveedores->id_proveedor],'class'=> 'ui form', 'method'=>'patch'] ) !!}
 
                         <div class="field">
                             <label>Razon Social</label>
-                            <input type="text" name="razon_social" placeholder="Razon Social" >
+                            <input type="text" name="razon_social" placeholder="Razon Social" value="{{$proveedores->razon_social}}" >
                         </div>
                         <div class="field">
                             <label>Nit</label>
-                            <input type="text" name="nit" placeholder="Numero de Identificacion Tributaria">
+                            <input type="text" name="nit" placeholder="Numero de Identificacion Tributaria" value=" {{$proveedores->nit}}">
                         </div>
 
                         <div class="field">
                             <label>Direccion Planta</label>
-                            <input type="text" name="direccion_planta" placeholder="Direccion Planta">
+                            <input type="text" name="direccion_planta" placeholder="Direccion Planta" value="{{$proveedores->direccion_planta}}">
                         </div>
 
                         <button class="ui button icon primary" type="submit">

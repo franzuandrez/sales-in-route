@@ -41,7 +41,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view('register.productos.create');
+        return view('registers.productos.create');
     }
 
     /**
@@ -56,6 +56,7 @@ class ProductoController extends Controller
         $producto = new Producto();
         $producto->descripcion  =   $request->get('descripcion');
         $producto->color        =   $request->get('color');
+        $producto->id_unidad        =$request->get('id_unidad');
         $producto->id_presentacion  = $request->get('id_presentacion');
         $producto->id_marca         = $request->get('id_marca');
         $producto->created_by       = $request->get('created_by');
@@ -63,7 +64,7 @@ class ProductoController extends Controller
 
         $producto->save();
         return redirect()
-            ->route('register.productos.index')
+            ->route('Producto.Index')
             ->with('success','Producto  creado exitosamente');
         #  }
         #catch (\Exception  $e){
@@ -95,15 +96,15 @@ class ProductoController extends Controller
 
         try{
 
-            $pais   =   Pais::findOrFail($id);
+            $productos  =   Producto::findOrFail($id);
 
-            return view('registro.productos.edit',compact('pais'));
+            return view('registers.productos.edit',compact('productos'));
 
         }catch (\Exception $ex){
 
 
             return redirect()
-                ->route('producto.index')
+                ->route('Producto.Index')
                 ->withErrors(['Pais no encontrado']);
 
         }
@@ -123,6 +124,7 @@ class ProductoController extends Controller
             $producto               = Producto::findOrFail($id);
             $producto->descripcion  =   $request->get('descripcion');
             $producto->color        =   $request->get('color');
+            $producto->id_unidad        =$request->get('id_unidad');
             $producto->id_presentacion  = $request->get('id_presentacion');
             $producto->id_marca         = $request->get('id_marca');
             $producto->created_by       = $request->get('created_by');
@@ -130,7 +132,7 @@ class ProductoController extends Controller
             $producto->update();
 
             return redirect()
-                ->route('producto.index')
+                ->route('Producto.Index')
                 ->with('success','Producto modificado exitosamente');
 
         } catch(\Exception $ex){

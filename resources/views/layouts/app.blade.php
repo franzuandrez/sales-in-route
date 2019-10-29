@@ -28,13 +28,14 @@
             Registro
             <i class="dropdown icon"></i>
             <div class="menu">
-                <a class="item" href="{{route('register.company.index')}}" > <i class="warehouse icon"></i>
+                <a class="item" href="{{route('Company.Index')}}" > <i class="warehouse icon"></i>
                     Sucursales</a>
-                <a class="item"href="{{route('register.product.index')}}" > <i class="boxes icon"></i>Productos</a>
-                <a class="item"   href="{{route('register.Proved.index')}}" ><i class="users icon"></i>Proveedores</a>
-                <a class="item"  href="{{route('register.Client.index')}}"     ><i class="child icon"></i> Clientes</a>
+                <a class="item"href="{{route('Producto.Index')}}" > <i class="boxes icon"></i>Productos</a>
+
+                <a class="item"   href="{{route('Proveedor.Index')}}" ><i class="users icon"></i>Proveedores</a>
+                <a class="item"  href="{{route('Clientes.Index')}}"     ><i class="child icon"></i> Clientes</a>
                 <a class="item"><i class="list icon"></i>Categoria Proveedores</a>
-            
+
             </div>
         </div>
         <div class="ui dropdown item">
@@ -50,7 +51,7 @@
             Sistema
             <i class="dropdown icon"></i>
             <div class="menu">
-                <a class="item"   href="{{route('register.Users.index')}}"    ><i class=" users icon"></i>
+                <a class="item"   href="{{route('Usuario.Index')}}"    ><i class=" users icon"></i>
                     Usuarios</a>
             </div>
         </div>

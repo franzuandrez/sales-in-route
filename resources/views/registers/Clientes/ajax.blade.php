@@ -2,7 +2,7 @@
 <table class="ui     celled table">
     <thead>
     <th colspan="4">
-        <a href="{{url('registers/Clientes/create')}}">
+        <a href="{{url('registers/clientes/create')}}">
             <div class="ui small float-right teal labeled icon button">
                 <i class="plus icon"></i> Nuevo
             </div>
@@ -72,7 +72,7 @@
          @endcomponent
         @else
         @foreach($Clientes as $Client)
-        
+
         <tr>
             <td>{{$Client->id_cliente}}</td>
             <td>{{$Client->nit}}</td>
@@ -85,10 +85,10 @@
         </tr>
 
         @endforeach
-     
-      
+
+
         @endif
-  
+
     </tbody>
 
     </tfoot>

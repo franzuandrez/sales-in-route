@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Proveedor extends Model
 {
-    protected $table  = 'proveedor';
+    protected $table  = 'proveedores';
     protected $primaryKey = "id_proveedor";
     protected  $fillable = [
         'name',
@@ -14,6 +14,6 @@ class Proveedor extends Model
         'created_by',
 
     ];
-    public $timestamps = true;
+    public $timestamps = false;
 
 }
