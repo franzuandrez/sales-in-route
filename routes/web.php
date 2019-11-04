@@ -58,6 +58,6 @@ Route::get('/productos/home','ProductoController@index')->name('Producto.Index')
 
 
 
-Route::get('/usuarios/home','UserController@index')->name('Usuario.Index');
+//Route::get('/usuarios/home','UserController@index')->name('Usuario.Index');
 
 

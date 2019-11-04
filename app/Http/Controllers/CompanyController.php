@@ -54,7 +54,7 @@ class CompanyController extends Controller
         $companies->id_empresa      =   $request->get('id_empresa');
         $companies->id_pais         =   $request->get('id_pais');
         $companies->descripcion         =   $request->get('id_pais');
-        $companies->direccion_planta         =   $request->get('direccion_planta');
+        $companies->direccion_planta    =   $request->get('direccion_planta');
 
         $companies->save();
         return redirect()

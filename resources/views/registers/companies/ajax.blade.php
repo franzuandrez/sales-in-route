@@ -1,7 +1,7 @@
 @include('components.search')
 <table class="ui     celled table">
     <thead>
-    <th colspan="4">
+    <th colspan="5">
         <a href="{{route('Register.Company.Create')}}">
             <div class="ui small float-right teal labeled icon button">
                 <i class="plus icon"></i> Nuevo
@@ -32,7 +32,7 @@
         <th>
             OPERACIONES
         </th>
-        <th></th>
+
     </tr>
     </thead>
     <tbody>

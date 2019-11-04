@@ -1,7 +1,7 @@
 @include('components.search')
 <table class="ui     celled table">
     <thead>
-    <th colspan="4">
+    <th colspan="5">
         <a href="{{url('registers/proveedores/create')}}">
             <div class="ui small float-right teal labeled icon button">
                 <i class="plus icon"></i> Nuevo
@@ -36,7 +36,6 @@
 
 
 
-        <th></th>
     </tr>
     </thead>
     <tbody>

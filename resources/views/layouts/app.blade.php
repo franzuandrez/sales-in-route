@@ -33,7 +33,7 @@
                 <a class="item"href="{{route('Producto.Index')}}" > <i class="boxes icon"></i>Productos</a>
 
                 <a class="item"   href="{{route('Proveedor.Index')}}" ><i class="users icon"></i>Proveedores</a>
-                <a class="item"  href="{{route('Clientes.Index')}}"     ><i class="child icon"></i> Clientes</a>
+                <a class="item"  href="{{route('Cliente.Index')}}"     ><i class="child icon"></i> Clientes</a>
                 <a class="item"><i class="list icon"></i>Categoria Proveedores</a>
 
             </div>
@@ -51,8 +51,8 @@
             Sistema
             <i class="dropdown icon"></i>
             <div class="menu">
-                <a class="item"   href="{{route('Usuario.Index')}}"    ><i class=" users icon"></i>
-                    Usuarios</a>
+               {{-- <a class="item"   href="{{route('Usuario.Index')}}"    ><i class=" users icon"></i>
+                    Usuarios</a>--}}
             </div>
         </div>
         <div class="right menu">s

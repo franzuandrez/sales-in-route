@@ -8,7 +8,7 @@
             <div class="ui segments">
                 <div class="ui secondary segment">
                     <h4 align="center">
-                        REGISTRO DE PRODUCTOS
+                        REGISTRO DE PROVEEDORES
                     </h4>
 
                 </div>

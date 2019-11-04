@@ -20,14 +20,14 @@ class ClienteController extends Controller
         $sort = $request->get('sort') == null ? 'desc' : ($request->get('sort'));
         $sortField = $request->get('field') == null ? 'username' : $request->get('field');
 
-        $cliente = DB::table('clientes')
+        $Clientes = DB::table('clientes')
             ->get();
 
 
         if($request->ajax()){
-            return view('registers.companies.ajax',compact('search','sort','sortField','cliente'));
+            return view('registers.clientes.ajax',compact('search','sort','sortField','Clientes'));
         }else{
-            return view('registers.companies.index',compact('search','sort','sortField','cliente'));
+            return view('registers.clientes.index',compact('search','sort','sortField','Clientes'));
 
         }
 
@@ -42,7 +42,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view('register.clientes.create');
+        return view('registers.clientes.create');
     }
 
     /**
@@ -57,6 +57,7 @@ class ClienteController extends Controller
             $cliente = new Cliente();
             $cliente->nit               =$request->get('nit');
             $cliente->razon_social      =$request->get('razon_social');
+            $cliente->nombre_comercial   =$request->get('nombre_comercial');
             $cliente->id_tipo_cliente   =$request->get('id_tipo_cliente');
             $cliente->direccion         =$request->get('direccion');
             $cliente->longitud          =$request->get('longitud');
@@ -66,7 +67,7 @@ class ClienteController extends Controller
             $cliente->id_pais           =$request->get('id_pais');
             $cliente->save();
             return redirect()
-                ->route('register.clientes.index')
+                ->route('Cliente.Index')
                 ->with('success','Proveedor creado exitosamente');
       #  }
         #catch (\Exception  $e){
@@ -100,13 +101,13 @@ class ClienteController extends Controller
 
             $clientes = Cliente::findOrFail($id);
 
-            return view('registro.clientes.edit',compact('clientes'));
+            return view('registers.clientes.edit',compact('clientes'));
 
         }catch (\Exception $ex){
 
 
             return redirect()
-                ->route('clientes.index')
+                ->route('Cliente.Index')
                 ->withErrors(['Cliente no encontrado']);
 
         }
@@ -136,13 +137,13 @@ class ClienteController extends Controller
             $cliente->update();
 
             return redirect()
-                ->route('proveedores.index')
+                ->route('Cliente.Index')
                 ->with('success','Proveedor modificado exitosamente');
 
         } catch(\Exception $ex){
 
             return redirect()
-                ->route('proveedores.index')
+                ->route('Cliente.Index')
                 ->withErrors(['Algo salio mal, por favor vuelva a intentarlo más tarde']);
         }
 

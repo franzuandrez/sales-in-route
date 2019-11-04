@@ -37,7 +37,7 @@
                     </div>
                     <div class="field">
                         <label>Direccion</label>
-                        <input type="text" name="direccion" placeholder="Direccion" value="{{$companies->direccion_planta}}">
+                        <input type="text" name="direccion_planta" placeholder="Direccion" value="{{$companies->direccion_planta}}">
                     </div>
 
 

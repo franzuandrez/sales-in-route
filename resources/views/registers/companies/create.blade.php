@@ -37,7 +37,7 @@
                             </div>
                             <div class="field">
                                 <label>Direccion</label>
-                                <input type="text" name="direccion" placeholder="Direccion">
+                                <input type="text" name="direccion_planta" placeholder="Direccion">
                             </div>
 
 
