@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Permissions;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PermissionController extends Controller
 {
@@ -18,14 +19,14 @@ class PermissionController extends Controller
         $sort = $request->get('sort') == null ? 'desc' : ($request->get('sort'));
         $sortField = $request->get('field') == null ? 'username' : $request->get('field');
 
-        $empres_has_user = DB::table('permission')
+        $permisos = DB::table('permissions')
             ->get();
 
 
         if($request->ajax()){
-            return view('registers.permissions.ajax',compact('search','sort','sortField','cat_cliente'));
+            return view('registers.permissions.ajax',compact('search','sort','sortField','permisos'));
         }else{
-            return view('registers.permissions.index',compact('search','sort','sortField','cat_cliente'));
+            return view('registers.permissions.index',compact('search','sort','sortField','permisos'));
 
         }
 
@@ -40,7 +41,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        return view('permissions.create');
+        return view('registers.permissions.create');
     }
 
     /**
@@ -58,10 +59,10 @@ class PermissionController extends Controller
         $permission->id_Menu        = $request->get('id_Menu');
         $permission->order          = $request->get('order');
         $permission->display_name   = $request->get('display_name');
-        $permission->icon           = $request->get('varchar');
+        $permission->icon           = $request->get('icon');
         $permission->save();
         return redirect()
-            ->route('register.permission.index')
+            ->route('Permission.Index')
             ->with('success','creado exitosamente');
         #  }
         #catch (\Exception  $e){
@@ -95,14 +96,14 @@ class PermissionController extends Controller
 
             $permission= Permissions::findOrFail($id);
 
-            return view('registro.permission.edit',compact('empresa_has_user'));
+            return view('registers.permissions.edit',compact('permission'));
 
         }catch (\Exception $ex){
 
 
             return redirect()
-                ->route('permission.index')
-                ->route('permission.index')
+                ->route('Permission.Index')
+
                 ->withErrors(['no encontrada']);
 
         }
@@ -125,17 +126,17 @@ class PermissionController extends Controller
             $permission->id_Menu        = $request->get('id_Menu');
             $permission->order          = $request->get('order');
             $permission->display_name   = $request->get('display_name');
-            $permission->icon           = $request->get('varchar');
+            $permission->icon           = $request->get('icon');
             $permission->update();
 
             return redirect()
-                ->route('permission.index')
+                ->route('Permission.Index')
                 ->with('success','  modificado exitosamente');
 
         } catch(\Exception $ex){
 
             return redirect()
-                ->route('permission.index')
+                ->route('Permission.Index')
                 ->withErrors(['Algo salio mal, por favor vuelva a intentarlo más tarde']);
         }
 

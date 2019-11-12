@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\CategoriaCliente;
+use Illuminate\Support\Facades\DB;
 
 class CategoriaClientesController extends Controller
 {
@@ -20,7 +21,6 @@ class CategoriaClientesController extends Controller
 
         $cat_cliente = DB::table('categoria_clientes')
             ->get();
-
 
         if($request->ajax()){
             return view('registers.categoria_clientes.ajax',compact('search','sort','sortField','cat_cliente'));
@@ -40,7 +40,7 @@ class CategoriaClientesController extends Controller
      */
     public function create()
     {
-        return view('register.cat_cliente.create');
+        return view('registers.categoria_clientes.create');
     }
 
     /**
@@ -57,7 +57,7 @@ class CategoriaClientesController extends Controller
         $cat_cliente->created_by    = $request->get('created_by');
         $cat_cliente->save();
         return redirect()
-            ->route('register.cat_clientes.index')
+            ->route('Categoria_Cliente.Index')
             ->with('success','creado exitosamente');
         #  }
         #catch (\Exception  $e){
@@ -90,14 +90,14 @@ class CategoriaClientesController extends Controller
         try{
 
             $cat_clientes = CategoriaCliente::findOrFail($id);
+            return view('registers.categoria_clientes.edit',compact('cat_clientes'));
 
-            return view('registro.cat_clientes.edit',compact('cat_clientes'));
 
         }catch (\Exception $ex){
 
 
             return redirect()
-                ->route('cat_clientes.index')
+                ->route('Categoria_Cliente.Index')
                 ->withErrors(['categoria cliente no encontrada']);
 
         }
@@ -114,6 +114,7 @@ class CategoriaClientesController extends Controller
     public function update(Request $request, $id)
     {
         try{
+
             $cat_cliente = CategoriaCliente::findOrFail($id);
             $cat_cliente->descripcion   = $request->get('descripcion');
             $cat_cliente->created_by    = $request->get('created_by');
@@ -121,13 +122,12 @@ class CategoriaClientesController extends Controller
 
 
             return redirect()
-                ->route('cat_clientes.index')
-                ->with('success','categoria  modificada exitosamente');
+            ->route('Categoria_Cliente.Index')
+            ->with('success','categoria  modificada exitosamente');
 
         } catch(\Exception $ex){
-
             return redirect()
-                ->route('cat_clientes.index')
+                ->route('Categoria_Clientes.Index')
                 ->withErrors(['Algo salio mal, por favor vuelva a intentarlo más tarde']);
         }
 

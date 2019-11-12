@@ -15,7 +15,7 @@ class MarcaController extends Controller
      */
     public function index(Request $request)
     {
-        $search = $request->get('search') = null ? '' : $request->get('search');
+        $search = $request->get('search') == null ? '' : $request->get('search');
         $sort = $request->get('sort') == null ? 'desc' : ($request->get('sort'));
         $sortField = $request->get('field') == null ? 'username' : $request->get('field');
 
@@ -24,9 +24,9 @@ class MarcaController extends Controller
 
 
         if($request->ajax()){
-            return view('registers.marca.ajax',compact('search','sort','sortField','marcas'));
+            return view('registers.marcas.ajax',compact('search','sort','sortField','marcas'));
         }else{
-            return view('registers.marca.index',compact('search','sort','sortField','marcas'));
+            return view('registers.marcas.index',compact('search','sort','sortField','marcas'));
 
         }
 
@@ -41,7 +41,7 @@ class MarcaController extends Controller
      */
     public function create()
     {
-        return view('register.marcas.create');
+        return view('registers.marcas.create');
     }
 
     /**
@@ -54,12 +54,12 @@ class MarcaController extends Controller
     {
         #  try{
         $marca = new Marca();
-        $marca->id_marca = $request->get('id_marca');
-        $marca->descripcion = $request->get('descripcion');
-        $marca->created_by= $request->get('created_by');
+        $marca->id_marca        = $request->get('id_marca');
+        $marca->descripcion     = $request->get('descripcion');
+        $marca->created_by      = $request->get('created_by');
         $marca->save();
         return redirect()
-            ->route('register.marcas.index')
+            ->route('Marca.Index')
             ->with('success','Marca creada exitosamente');
         #  }
         #catch (\Exception  $e){
@@ -91,15 +91,15 @@ class MarcaController extends Controller
 
         try{
 
-            $marca = Empresa::findOrFail($id);
+            $marcas = Marca::findOrFail($id);
 
-            return view('registro.marcas.edit',compact('marca'));
+            return view('registers.marcas.edit',compact('marcas'));
 
         }catch (\Exception $ex){
 
 
             return redirect()
-                ->route('marca.index')
+                ->route('Marca.Index')
                 ->withErrors(['Empresa no encontrada']);
 
         }
@@ -116,20 +116,19 @@ class MarcaController extends Controller
     public function update(Request $request, $id)
     {
         try{
-            $marca    = Marca::findOrFail($id);
-            $marca->id_marca = $request->get('id_marca');
+            $marca  = Marca::findOrFail($id);
             $marca->descripcion = $request->get('descripcion');
             $marca->created_by= $request->get('created_by');
             $marca->update();
 
             return redirect()
-                ->route('marca.index')
+                ->route('Marca.Index')
                 ->with('success','Empresa modificada exitosamente');
 
         } catch(\Exception $ex){
 
             return redirect()
-                ->route('marca.index')
+                ->route('Marca.Index')
                 ->withErrors(['Algo salio mal, por favor vuelva a intentarlo más tarde']);
         }
 

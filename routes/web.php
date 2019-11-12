@@ -46,8 +46,57 @@ Route::get('registers/clientes/create','ClienteController@create')->name('Regist
 Route::post('registers/clientes/store','ClienteController@store')->name('Register.Cliente.Store');
 Route::get('registers/clientes/edit/{id}','ClienteController@edit')->name('Register.Cliente.Edit');
 Route::patch('registers/clientes/update/{id}','ClienteController@update')->name('Register.Cliente.Update');
-Route::patch('registers/clientes/update/{id}','ClienteController@update')->name('Register.Cliente.Update');
-Route::patch('registers/clientes/update/{id}','ClienteController@update')->name('Register.Cliente.Update');
+
+
+
+//MARCAS
+
+Route::get('/marcas/home', 'MarcaController@index')->name('Marca.Index');
+Route::get('registers/marcas/create','MarcaController@create')->name('Register.Marca.Create');
+Route::post('registers/marcas/store','MarcaController@store')->name('Register.Marca.Store');
+Route::get('registers/marcas/edit/{id}','MarcaController@edit')->name('Register.Marca.Edit');
+Route::patch('registers/marcas/update/{id}','MarcaController@update')->name('Register.Marca.Update');
+
+
+//PERMISOS
+
+Route::get('/permissions/home', 'PermissionController@index')->name('Permission.Index');
+Route::get('registers/permissions/create','PermissionController@create')->name('Register.Permission.Create');
+Route::post('registers/permissions/store','PermissionController@store')->name('Register.Permission.Store');
+Route::get('registers/permissions/edit/{id}','PermissionController@edit')->name('Register.Permission.Edit');
+Route::patch('registers/permissions/update/{id}','PermissionController@update')->name('Register.Permission.Update');
+
+
+//CATEGORIA CLIENTE
+Route::get('/categoria_clientes/home', 'CategoriaClientesController@index')->name('Categoria_Cliente.Index');
+Route::get('registers/categoria_clientes/create','CategoriaClientesController@create')->name('Register.Categoria_Cliente.Create');
+Route::post('registers/categoria_clientes/store','CategoriaClientesController@store')->name('Register.Categoria_Cliente.Store');
+Route::get('registers/categoria_clientes/edit/{id}','CategoriaClientesController@edit')->name('Register.Categoria_Cliente.Edit');
+Route::patch('registers/categoria_clientes/update/{id}','CategoriaClientesController@update')->name('Register.Categoria_Cliente.Update');
+
+//EMPRESA CON USUARIOS
+Route::get('/paises/home', 'PaisController@index')->name('Pais.Index');
+Route::get('registers/paises/create','PaisController@create')->name('Register.Pais.Create');
+Route::post('registers/paises/store','PaisController@store')->name('Register.Pais.Store');
+Route::get('registers/paises/edit/{id}','PaisController@edit')->name('Register.Pais.Edit');
+Route::patch('registers/paises/update/{id}','PaisController@update')->name('Register.Pais.Update');
+
+
+//ROLES
+
+Route::get('/roles/home', 'RolesController@index')->name('Rol.Index');
+Route::get('registers/roles/create','RolesController@create')->name('Register.Rol.Create');
+Route::post('registers/roles/store','RolesController@store')->name('Register.Rol.Store');
+Route::get('registers/roles/edit/{id}','RolesController@edit')->name('Register.Rol.Edit');
+Route::patch('registers/roles/update/{id}','RolesController@update')->name('Register.Rol.Update');
+
+
+//UNIDADES
+Route::get('/unidades/home', 'UnidadesController@index')->name('Unidad.Index');
+Route::get('registers/unidades/create','UnidadesController@create')->name('Register.Unidad.Create');
+Route::post('registers/unidades/store','UnidadesController@store')->name('Register.Unidad.Store');
+Route::get('registers/unidades/edit/{id}','UnidadesController@edit')->name('Register.Unidad.Edit');
+Route::patch('registers/unidades/update/{id}','UnidadesController@update')->name('Register.Unidad.Update');
 
 
 

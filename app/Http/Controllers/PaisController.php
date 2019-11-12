@@ -20,14 +20,13 @@ class PaisController extends Controller
         $sort = $request->get('sort') == null ? 'desc' : ($request->get('sort'));
         $sortField = $request->get('field') == null ? 'username' : $request->get('field');
 
-        $cliente = DB::table('pais')
+        $pais= DB::table('pais')
             ->get();
 
-
         if($request->ajax()){
-            return view('registers.pais.ajax',compact('search','sort','sortField','cliente'));
+            return view('registers.paises.ajax',compact('search','sort','sortField','pais'));
         }else{
-            return view('registers.pais.index',compact('search','sort','sortField','cliente'));
+            return view('registers.paises.index',compact('search','sort','sortField','pais'));
 
         }
 
@@ -42,7 +41,7 @@ class PaisController extends Controller
      */
     public function create()
     {
-        return view('register.pais.create');
+        return view('registers.paises.create');
     }
 
     /**
@@ -58,10 +57,9 @@ class PaisController extends Controller
         $pais->descripcion      = $request->get('descripcion');
         $pais->codigo_postal    = $request->get('codigo_postal');
         $pais->isActive         = $request->get('isActive');
-
         $pais->save();
         return redirect()
-            ->route('register.pais.index')
+            ->route('Pais.Index')
             ->with('success','Pais creado exitosamente');
         #  }
         #catch (\Exception  $e){
@@ -93,15 +91,14 @@ class PaisController extends Controller
 
         try{
 
-            $pais   =   Pais::findOrFail($id);
-
-            return view('registro.pais.edit',compact('pais'));
+            $pais  =   Pais::findOrFail($id);
+            return view('registers.paises.edit',compact('pais'));
 
         }catch (\Exception $ex){
 
 
             return redirect()
-                ->route('pais.index')
+                ->route('Pais.index')
                 ->withErrors(['Pais no encontrado']);
 
         }
@@ -125,13 +122,13 @@ class PaisController extends Controller
             $pais->update();
 
             return redirect()
-                ->route('pais.index')
+                ->route('Pais.Index')
                 ->with('success','Pais modificado exitosamente');
 
         } catch(\Exception $ex){
 
             return redirect()
-                ->route('pais.index')
+                ->route('Pais.Index')
                 ->withErrors(['Algo salio mal, por favor vuelva a intentarlo más tarde']);
         }
 
@@ -150,11 +147,11 @@ class PaisController extends Controller
              $pais->isActive = 0;
              $pais->update();
              return redirect()
-                 ->route('pais.index')
+                 ->route('Pais.index')
                  ->with('success','Pais dado de baja exitosamente');
          } catch (\Exception $e) {
              return redirect()
-                 ->route('pais.index')
+                 ->route('Pais.Index')
                  ->withErrors(['Algo salio mal, por favor vuelva a intentarlo más tarde']);
          }
 

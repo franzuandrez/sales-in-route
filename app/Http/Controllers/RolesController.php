@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Roles;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RolesController extends Controller
 {
@@ -21,7 +22,6 @@ class RolesController extends Controller
 
         $roles = DB::table('roles')
             ->get();
-
 
         if($request->ajax()){
             return view('registers.roles.ajax',compact('search','sort','sortField','roles'));
@@ -54,21 +54,21 @@ class RolesController extends Controller
     {
 
 
-        #  try{
+        try{
         $roles = new Roles();
-        $roles->name        = $request->get('name');
-        $roles->descripcion        = $request->get('descripcion');
-        $roles->creted_by        = $request->get('created_by');
+        $roles->name                = $request->get('name');
+        $roles->descripcion         = $request->get('descripcion');
+        $roles->created_by           = $request->get('created_by');
         $roles->save();
         return redirect()
-            ->route('roles.index')
+            ->route('Rol.Index')
             ->with('success','creado exitosamente');
-        #  }
-        #catch (\Exception  $e){
-        ## return redirect()
-        ##->route('roles.index')
-        ##   ->withErrors(['Algo salio mal, por favor vuelva a intentarlo más tarde'.$e]);
-        #}
+         }
+        catch (\Exception  $e){
+         return redirect()
+        ->route('Rol.Index')
+          ->withErrors(['Algo salio mal, por favor vuelva a intentarlo más tarde']);
+        }
     }
 
     /**
@@ -94,6 +94,7 @@ class RolesController extends Controller
         try{
 
             $roles= Roles::findOrFail($id);
+            dd($roles);
 
             return view('registers.roles.edit',compact('roles'));
 
@@ -121,17 +122,17 @@ class RolesController extends Controller
             $roles                  = Roles::findOrFail($id);
             $roles->name            = $request->get('name');
             $roles->descripcion     = $request->get('descripcion');
-            $roles->creted_by       = $request->get('created_by');
+            $roles->created_by       = $request->get('created_by');
             $roles->update();
 
             return redirect()
-                ->route('roles.index')
+                ->route('Rol.Index')
                 ->with('success','  modificado exitosamente');
 
         } catch(\Exception $ex){
 
             return redirect()
-                ->route('roles.index')
+                ->route('Rol.Index')
                 ->withErrors(['Algo salio mal, por favor vuelva a intentarlo más tarde']);
         }
 

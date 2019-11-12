@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Unidades;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UnidadesController extends Controller
 {
@@ -52,22 +53,21 @@ class UnidadesController extends Controller
     public function store(Request $request)
     {
 
-
-        #  try{
+         try{
         $unidades = new Unidades();
-        $unidades->descrpcion       = $request->get('descripcion');
+        $unidades->descripcion       = $request->get('descripcion');
         $unidades->created_by       = $request->get('created_by');
 
         $unidades->save();
         return redirect()
             ->route('Unidad.Index')
             ->with('success','creado exitosamente');
-        #  }
-        #catch (\Exception  $e){
-        ## return redirect()
-        ##->route('roles.index')
-        ##   ->withErrors(['Algo salio mal, por favor vuelva a intentarlo más tarde'.$e]);
-        #}
+        }
+        catch (\Exception  $e){
+         return redirect()
+        ->route('Unidad.Index')
+           ->withErrors(['Algo salio mal, por favor vuelva a intentarlo más tarde']);
+        }
     }
 
     /**
@@ -93,14 +93,11 @@ class UnidadesController extends Controller
         try{
 
             $unidades = Unidades::OrFail($id);
-
             return view('registers.unidades.edit',compact('unidades'));
 
         }catch (\Exception $ex){
-
-
             return redirect()
-                ->route('Unidades.index')
+                ->route('Unidad.Index')
                 ->withErrors(['no encontrada']);
 
         }
@@ -118,18 +115,17 @@ class UnidadesController extends Controller
     {
         try{
             $unidades               = Unidades::findOrFail($id);
-            $unidades->descrpcion       = $request->get('descripcion');
+            $unidades->descripcion       = $request->get('descripcion');
             $unidades->created_by       = $request->get('created_by');
             $unidades->update();
 
             return redirect()
-                ->route('Unidades.Index')
+                ->route('Unidad.Index')
                 ->with('success','  modificado exitosamente');
 
         } catch(\Exception $ex){
-
             return redirect()
-                ->route('RolesPermision.index')
+                ->route('Unidad.index')
                 ->withErrors(['Algo salio mal, por favor vuelva a intentarlo más tarde']);
         }
 
