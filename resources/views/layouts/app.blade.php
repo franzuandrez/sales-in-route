@@ -53,8 +53,10 @@
             Sistema
             <i class="dropdown icon"></i>
             <div class="menu">
-                <a class="item"   href="#"   ><i class=" users icon"></i>
+                <a class="item"   href="{{url('sistema/users')}}"   ><i class=" users icon"></i>
                     Usuarios</a>
+                <a class="item"   href="{{url('sistema/roles')}}"   ><i class=" wrench icon"></i>
+                    Roles</a>
             </div>
         </div>
         <div class="right menu">s

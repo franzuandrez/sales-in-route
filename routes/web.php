@@ -107,6 +107,12 @@ Route::get('/productos/home','ProductoController@index')->name('Producto.Index')
 
 
 
-//Route::get('/usuarios/home','UserController@index')->name('Usuario.Index');
+Route::get('sistema/users','UserController@index')->name('sistema.users.index');
+Route::get('sistema/users/create','UserController@create')->name('sistema.users.create');
+Route::get('sistema/users/{id}/edit','UserController@edit')->name('sistema.users.edit');
+Route::patch('sistema/users/{id}','UserController@update')->name('sistema.users.update');
+Route::get('sistema/users/{id}','UserController@show')->name('sistema.users.show');
+
+
 
 
