@@ -1,7 +1,7 @@
 @include('components.search')
-<table class="ui     celled table">
+<table class="ui  fixed-top  celled table">
     <thead>
-    <th colspan="12">
+    <th colspan="9">
         <a href="{{url('registers/productos/create')}}">
             <div class="ui small float-right teal labeled icon button">
                 <i class="plus icon"></i> Nuevo
@@ -16,20 +16,15 @@
                            'titulo'=>'id'])
 
         </th>
-        <th>
-            @include('components.sort-table',[
-                           'field'=>'descripcion',
-                           'titulo'=>'Nombre Producto'])
-
+        <th> @include('components.sort-table',[
+                           'field'=>'decripcion',
+                           'titulo'=>'DESCRIPCION'])
         </th>
         <th> @include('components.sort-table',[
                            'field'=>'color',
                            'titulo'=>'COLOR'])
         </th>
-        <th> @include('components.sort-table',[
-                           'field'=>'decripcion',
-                           'titulo'=>'DESCRIPCION'])
-        </th>
+
         <th>
             @include('components.sort-table',[
                           'field'=>'id_presentacion',
@@ -46,19 +41,7 @@
                           'field'=>'id_unidad',
                           'titulo'=>'UNIDAD '])
         </th>
-        <th>
-            @include('components.sort-table',[
-                          'field'=>'created_by',
-                          'titulo'=>'CREADO POR'])
-        </th>
 
-        <th>
-            @include('components.sort-table',[
-                           'field'=>'created_at',
-                           'titulo'=>'FECHA DE INGRESO'])
-
-
-        </th>
         <th>
             @include('components.sort-table',[
                            'field'=>'updated_at',
@@ -86,12 +69,9 @@
             <td>{{$Product->id_producto}}</td>
             <td>{{$Product->descripcion}}</td>
             <td>{{$Product->color}}</td>
-            <td>{{$Product->descripcion}}</td>
-            <td>{{$Product->id_presentacion}}</td>
-            <td>{{$Product->id_marca}}</td>
-            <td>{{$Product->id_unidad}}</td>
-            <td>{{$Product->created_by}}</td>
-            <td>{{$Product->created_at}}</td>
+            <td>{{$Product->presentacion->descripcion}}</td>
+            <td>{{$Product->marca->descripcion}}</td>
+            <td>{{$Product->unidad->descripcion}}</td>
             <td>{{$Product->updated_at}}</td>
             <td >
                 <div class="ui buttons">

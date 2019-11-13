@@ -44,7 +44,7 @@
 
         <tr>
             <td>{{$Company->id_empresa}}</td>
-            <td>{{$Company->id_pais}}</td>
+            <td>{{$Company->pais->descripcion}}</td>
             <td>{{$Company->descripcion}}</td>
             <td>{{$Company->direccion_planta}}</td>
             <td>

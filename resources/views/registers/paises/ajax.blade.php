@@ -13,7 +13,7 @@
             <table class="ui celled table" al>
                     <thead>
                     <th colspan="15">
-                        <a href="{{url('registers/marcas/create')}}">
+                        <a href="{{route('Register.Pais.Create')}}">
                             <div class="ui small float-right teal labeled icon button">
                                 <i class="plus icon"></i> Nuevo
                             </div>
@@ -22,21 +22,19 @@
                     <tr>
                         <th>
                             @include('components.sort-table',[
-                                           'field'=>'','id_marca',
-                                           'titulo'=>'Id Marca'])
+                                           'field'=>'','id_pais',
+                                           'titulo'=>'Codigo Pais'])
 
                         </th>
                         <th> @include('components.sort-table',[
                                            'field'=>'descripcion',
                                            'titulo'=>'Descripcion'])
                         </th>
-
                         <th>
                             @include('components.sort-table',[
-                                          'field'=>'updated_at',
-                                          'titulo'=>'Fecha Actualizacion'])
+                                          'field'=>'codigo_postal',
+                                          'titulo'=>'Codigo Postal'])
                         </th>
-
 
                         <th>
                           OPERACIONES
@@ -47,23 +45,22 @@
                     </tr>
                     </thead>
                     <tbody>
-                        @if($marcas->isEmpty())
+                        @if($paises->isEmpty())
                         @component('components.empty-table',['total_columns'=>4])
                          @endcomponent
                         @else
-                        @foreach($marcas as $marca)
+                        @foreach($paises as $pais)
 
                         <tr>
-                            <td>{{$marca->id_marca}}</td>
-                            <td>{{$marca->descripcion}}</td>
-                            <td>{{$marca->updated_at}}</td>
+                            <td>{{$pais->id_pais}}</td>
+                            <td>{{$pais->descripcion}}</td>
+                            <td>{{$pais->codigo_postal}}</td>
 
                             <td>
                                 <div align="center">
-                                    <a href="{{route('Register.Marca.Edit',$marca->id_marca)}}">
+                                    <a href="{{route('Register.Pais.Edit',[$pais->id_pais])}}">
                                         <button class="ui yellow button" >
                                             MODIFICAR
-
                                         </button>
                                     </a>
                                     <button class="ui red button">

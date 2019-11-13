@@ -20,8 +20,7 @@ class RolesController extends Controller
         $sort = $request->get('sort') == null ? 'desc' : ($request->get('sort'));
         $sortField = $request->get('field') == null ? 'username' : $request->get('field');
 
-        $roles = DB::table('roles')
-            ->get();
+        $roles = Roles::get();
 
         if($request->ajax()){
             return view('registers.roles.ajax',compact('search','sort','sortField','roles'));
@@ -94,7 +93,7 @@ class RolesController extends Controller
         try{
 
             $roles= Roles::findOrFail($id);
-            dd($roles);
+
 
             return view('registers.roles.edit',compact('roles'));
 

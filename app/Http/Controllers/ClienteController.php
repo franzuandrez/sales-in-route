@@ -20,8 +20,8 @@ class ClienteController extends Controller
         $sort = $request->get('sort') == null ? 'desc' : ($request->get('sort'));
         $sortField = $request->get('field') == null ? 'username' : $request->get('field');
 
-        $Clientes = DB::table('clientes')
-            ->get();
+        $Clientes = Cliente::get();
+
 
 
         if($request->ajax()){

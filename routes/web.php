@@ -74,8 +74,9 @@ Route::post('registers/categoria_clientes/store','CategoriaClientesController@st
 Route::get('registers/categoria_clientes/edit/{id}','CategoriaClientesController@edit')->name('Register.Categoria_Cliente.Edit');
 Route::patch('registers/categoria_clientes/update/{id}','CategoriaClientesController@update')->name('Register.Categoria_Cliente.Update');
 
-//EMPRESA CON USUARIOS
-Route::get('/paises/home', 'PaisController@index')->name('Pais.Index');
+//PAIS
+
+Route::get('/paises/home','PaisController@index')->name('Pais.Index');
 Route::get('registers/paises/create','PaisController@create')->name('Register.Pais.Create');
 Route::post('registers/paises/store','PaisController@store')->name('Register.Pais.Store');
 Route::get('registers/paises/edit/{id}','PaisController@edit')->name('Register.Pais.Edit');
@@ -98,6 +99,15 @@ Route::post('registers/unidades/store','UnidadesController@store')->name('Regist
 Route::get('registers/unidades/edit/{id}','UnidadesController@edit')->name('Register.Unidad.Edit');
 Route::patch('registers/unidades/update/{id}','UnidadesController@update')->name('Register.Unidad.Update');
 
+
+
+//PRESENTACIONES
+
+Route::get('/presentaciones/home', 'PresentacionesController@index')->name('Presentacion.Index');
+Route::get('registers/presentaciones/create','PresentacionesController@create')->name('Register.Presentacion.Create');
+Route::post('registers/presentaciones/store','PresentacionesController@store')->name('Register.Presentacion.Store');
+Route::get('registers/presentaciones/edit/{id}','PresentacionesController@edit')->name('Register.Presentacion.Edit');
+Route::patch('registers/presentaciones/update/{id}','PresentacionesController@update')->name('Register.Presentacion.Update');
 
 
 

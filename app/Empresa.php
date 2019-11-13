@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Pais;
 
 class Empresa extends Model
 {
@@ -14,4 +15,8 @@ class Empresa extends Model
         'direccion_planta',
     ];
     public $timestamps = false;
+
+    public function pais(){
+        return $this->belongsTo('App\Pais','id_pais','id_pais');
+    }
 }

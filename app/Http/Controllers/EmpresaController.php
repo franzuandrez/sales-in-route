@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Cliente;
 use App\Empresa;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class EmpresaController extends Controller
 {
@@ -20,9 +19,8 @@ class EmpresaController extends Controller
         $sort = $request->get('sort') == null ? 'desc' : ($request->get('sort'));
         $sortField = $request->get('field') == null ? 'username' : $request->get('field');
 
-        $empresa = DB::table('empresa')
-            ->get();
-
+        $empresa = Empresa::get();
+        dd($empresa);
 
         if($request->ajax()){
             return view('registers.empresa.ajax',compact('search','sort','sortField','empresa'));

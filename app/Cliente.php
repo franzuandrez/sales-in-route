@@ -22,4 +22,11 @@ class Cliente extends Model
         'created_by',
     ];
     public $timestamps = true;
+
+
+    public function tipo_cliente(){
+
+        return $this->belongsTo('App\CategoriaCliente','id_tipo_cliente','id_categoria_cliente');
+    }
+
 }

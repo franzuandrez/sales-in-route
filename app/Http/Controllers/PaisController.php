@@ -20,13 +20,13 @@ class PaisController extends Controller
         $sort = $request->get('sort') == null ? 'desc' : ($request->get('sort'));
         $sortField = $request->get('field') == null ? 'username' : $request->get('field');
 
-        $pais= DB::table('pais')
-            ->get();
+        $paises= Pais::get();
+
 
         if($request->ajax()){
-            return view('registers.paises.ajax',compact('search','sort','sortField','pais'));
+            return view('registers.paises.ajax',compact('search','sort','sortField','paises'));
         }else{
-            return view('registers.paises.index',compact('search','sort','sortField','pais'));
+            return view('registers.paises.index',compact('search','sort','sortField','paises'));
 
         }
 
@@ -56,7 +56,7 @@ class PaisController extends Controller
         $pais = new Pais();
         $pais->descripcion      = $request->get('descripcion');
         $pais->codigo_postal    = $request->get('codigo_postal');
-        $pais->isActive         = $request->get('isActive');
+        $pais->isActive         = 1;
         $pais->save();
         return redirect()
             ->route('Pais.Index')
@@ -91,7 +91,8 @@ class PaisController extends Controller
 
         try{
 
-            $pais  =   Pais::findOrFail($id);
+            $pais  =  Pais::findOrFail($id);
+
             return view('registers.paises.edit',compact('pais'));
 
         }catch (\Exception $ex){

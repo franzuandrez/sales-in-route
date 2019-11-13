@@ -92,7 +92,7 @@ class UnidadesController extends Controller
 
         try{
 
-            $unidades = Unidades::OrFail($id);
+            $unidades = Unidades::findOrFail($id);
             return view('registers.unidades.edit',compact('unidades'));
 
         }catch (\Exception $ex){

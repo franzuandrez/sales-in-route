@@ -36,7 +36,12 @@
                 <a class="item"  href="{{route('Cliente.Index')}}"     ><i class="child icon"></i> Clientes</a>
                 <a class="item"  href="{{route('Marca.Index')}}"     ><i class="copyright icon"></i> Marcas</a>
                 <a class="item"  href="{{route('Permission.Index')}}"     ><i class="copyright icon"></i> Permisos</a>
-                <a class="item"><i class="list icon"></i>Categoria Proveedores</a>
+                <a class="item"  href="{{route('Pais.Index')}}"><i class="flag icon"></i> Paises</a>
+                <a class="item"  href="{{route('Rol.Index')}}"><i class="user plus icon"></i> Roles</a>
+                <a class="item"  href="{{route('Unidad.Index')}}"><i class="clipboard list icon"></i> Unidades</a>
+                <a class="item"  href="{{route('Presentacion.Index')}}"><i class="product hunt  icon"></i> Presentacion</a>
+                <a class="item"  href="{{route('Categoria_Cliente.Index')}}"><i class="handshake  icon"></i> Categoria Clientess</a>
+
 
             </div>
         </div>

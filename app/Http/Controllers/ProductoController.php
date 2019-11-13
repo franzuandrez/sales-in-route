@@ -19,9 +19,7 @@ class ProductoController extends Controller
         $sort = $request->get('sort') == null ? 'desc' : ($request->get('sort'));
         $sortField = $request->get('field') == null ? 'username' : $request->get('field');
 
-        $productos = DB::table('productos')
-            ->get();
-
+        $productos = Producto::get();
 
         if($request->ajax()){
             return view('registers.productos.ajax',compact('search','sort','sortField','productos'));
@@ -138,7 +136,7 @@ class ProductoController extends Controller
         } catch(\Exception $ex){
 
             return redirect()
-                ->route('producto.index')
+                ->route('Producto.Index')
                 ->withErrors(['Algo salio mal, por favor vuelva a intentarlo más tarde']);
         }
 

@@ -19,13 +19,12 @@ class CategoriaClientesController extends Controller
         $sort = $request->get('sort') == null ? 'desc' : ($request->get('sort'));
         $sortField = $request->get('field') == null ? 'username' : $request->get('field');
 
-        $cat_cliente = DB::table('categoria_clientes')
-            ->get();
+        $categoria_clientes = CategoriaCliente::get();
 
         if($request->ajax()){
-            return view('registers.categoria_clientes.ajax',compact('search','sort','sortField','cat_cliente'));
+            return view('registers.categoria_clientes.ajax',compact('search','sort','sortField','categoria_clientes'));
         }else{
-            return view('registers.categoria_clientes.index',compact('search','sort','sortField','cat_cliente'));
+            return view('registers.categoria_clientes.index',compact('search','sort','sortField','categoria_clientes'));
 
         }
 
@@ -54,7 +53,7 @@ class CategoriaClientesController extends Controller
         #  try{
         $cat_cliente= new CategoriaCliente();
         $cat_cliente->descripcion   = $request->get('descripcion');
-        $cat_cliente->created_by    = $request->get('created_by');
+        //$cat_cliente->created_by    = $request->get('created_by');
         $cat_cliente->save();
         return redirect()
             ->route('Categoria_Cliente.Index')
@@ -89,8 +88,8 @@ class CategoriaClientesController extends Controller
 
         try{
 
-            $cat_clientes = CategoriaCliente::findOrFail($id);
-            return view('registers.categoria_clientes.edit',compact('cat_clientes'));
+            $categoria_clientes = CategoriaCliente::findOrFail($id);
+            return view('registers.categoria_clientes.edit',compact('categoria_clientes'));
 
 
         }catch (\Exception $ex){

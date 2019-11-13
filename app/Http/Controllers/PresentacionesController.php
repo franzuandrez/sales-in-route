@@ -19,8 +19,7 @@ class PresentacionesController extends Controller
         $sort = $request->get('sort') == null ? 'desc' : ($request->get('sort'));
         $sortField = $request->get('field') == null ? 'username' : $request->get('field');
 
-        $presentaciones = DB::table('presentaciones')
-            ->get();
+        $presentaciones = Presentaciones::get();
 
 
         if($request->ajax()){
@@ -41,7 +40,7 @@ class PresentacionesController extends Controller
      */
     public function create()
     {
-        return view('register.presentaciones.create');
+        return view('registers.presentaciones.create');
     }
 
     /**
@@ -60,7 +59,7 @@ class PresentacionesController extends Controller
 
         $presentaciones->save();
         return redirect()
-            ->route('register.presentaciones.index')
+            ->route('Presentacion.Index')
             ->with('success','Presentacion  creado exitosamente');
         #  }
         #catch (\Exception  $e){
@@ -94,13 +93,12 @@ class PresentacionesController extends Controller
 
             $presentaciones=   Presentaciones::findOrFail($id);
 
-            return view('registro.presentaciones.edit',compact('presentaciones'));
+            return view('registers.presentaciones.edit',compact('presentaciones'));
 
         }catch (\Exception $ex){
 
-
             return redirect()
-                ->route('presentaciones.index')
+                ->route('Presentacion.Index')
                 ->withErrors([' Presentaciones no encontrada']);
 
         }
@@ -118,19 +116,17 @@ class PresentacionesController extends Controller
     {
         try{
             $presentaciones             = Presentaciones::findOrFail($id);
-            $presentaciones = new Presentaciones();
             $presentaciones->descripcion    = $request->get('descripcion');
-            $presentaciones->created_by     =   $request->get('created_by');
             $presentaciones->update();
 
             return redirect()
-                ->route('presentaciones.index')
+                ->route('Presentacion.Index')
                 ->with('success','Presentacion modificada exitosamente');
 
         } catch(\Exception $ex){
 
             return redirect()
-                ->route('presentaciones.index')
+                ->route('Presentacion.index')
                 ->withErrors(['Algo salio mal, por favor vuelva a intentarlo más tarde']);
         }
 

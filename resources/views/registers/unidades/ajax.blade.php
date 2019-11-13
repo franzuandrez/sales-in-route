@@ -1,6 +1,4 @@
 
-
-
 <div class="ui  centered grid">
     <div class="column"></div>
 
@@ -12,10 +10,10 @@
             @include('components.search')
             </div>
 
-            <table class="ui fixed-top celled table" >
+            <table class="ui celled table" al>
                     <thead>
                     <th colspan="15">
-                        <a href="{{url('registers/clientes/create')}}">
+                        <a href="{{route('Register.Unidad.Create')}}">
                             <div class="ui small float-right teal labeled icon button">
                                 <i class="plus icon"></i> Nuevo
                             </div>
@@ -23,36 +21,16 @@
                     </th>
                     <tr>
                         <th>
+
                             @include('components.sort-table',[
-                                           'field'=>'id_cliente',
-                                           'titulo'=>'Id cliente'])
+                                           'field'=>'','id_unidad',
+                                           'titulo'=>'Codigo Unidad'])
 
                         </th>
                         <th> @include('components.sort-table',[
-                                           'field'=>'nit',
-                                           'titulo'=>'Nit'])
+                                           'field'=>'descripcion',
+                                           'titulo'=>'Descripcion'])
                         </th>
-                        <th>
-                            @include('components.sort-table',[
-                                          'field'=>'razon_social',
-                                          'titulo'=>'Razon Social'])
-                        </th>
-                        <th>
-                            @include('components.sort-table',[
-                                          'field'=>'nombre_comercia',
-                                          'titulo'=>'Nombre Comercial'])
-                        </th>
-                        <th>
-                            @include('components.sort-table',[
-                                          'field'=>'id_tipo_cliente',
-                                          'titulo'=>'Tipo Cliente'])
-                        </th>
-                        <th>
-                            @include('components.sort-table',[
-                                          'field'=>'direccion',
-                                          'titulo'=>'Direccion'])
-                        </th>
-
 
                         <th>
                             @include('components.sort-table',[
@@ -63,28 +41,23 @@
                           OPERACIONES
                         </th>
 
-
-
                     </tr>
                     </thead>
                     <tbody>
-                        @if($Clientes->isEmpty())
+                        @if($unidades->isEmpty())
                         @component('components.empty-table',['total_columns'=>4])
                          @endcomponent
                         @else
-                        @foreach($Clientes as $Client)
+                        @foreach($unidades as $unidad)
 
                         <tr>
-                            <td>{{$Client->id_cliente}}</td>
-                            <td>{{$Client->nit}}</td>
-                            <td>{{$Client->razon_social}}</td>
-                            <td>{{$Client->nombre_comercial}}</td>
-                            <td>{{$Client->tipo_cliente->descripcion}}</td>
-                            <td>{{$Client->direccion}}</td>
-                            <td>{{$Client->updated_at}}</td>
+                            <td>{{$unidad->id_unidad}}</td>
+                            <td>{{$unidad->descripcion}}</td>
+                            <td>{{$unidad->updated_at}}</td>
+
                             <td>
                                 <div align="center">
-                                    <a href="{{route('Register.Cliente.Edit',$Client->id_cliente)}}">
+                                    <a href="{{route('Register.Unidad.Edit',$unidad->id_unidad)}}">
                                         <button class="ui yellow button" >
                                             MODIFICAR
 
