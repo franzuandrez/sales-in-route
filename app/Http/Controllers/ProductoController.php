@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Empresa;
+use App\Marca;
+use App\Presentaciones;
 use App\Producto;
+use App\Unidades;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -21,6 +25,7 @@ class ProductoController extends Controller
 
         $productos = Producto::get();
 
+
         if($request->ajax()){
             return view('registers.productos.ajax',compact('search','sort','sortField','productos'));
         }else{
@@ -38,8 +43,13 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
+
     {
-        return view('registers.productos.create');
+        $marcas          =   Marca::get();
+        $empresas        =  Empresa::get();
+        $unidades         =  Unidades::get();
+        $presentaciones   =   Presentaciones::get();
+        return view('registers.productos.create', compact('empresas','marcas','unidades','productos','presentaciones'));
     }
 
     /**
@@ -93,10 +103,13 @@ class ProductoController extends Controller
     {
 
         try{
-
+            $marcas          =   Marca::get();
+            $empresas        =  Empresa::get();
+            $unidades         =  Unidades::get();
+            $presentaciones   =   Presentaciones::get();
             $productos  =   Producto::findOrFail($id);
 
-            return view('registers.productos.edit',compact('productos'));
+            return view('registers.productos.edit',compact('productos','empresas','marcas','unidades','productos','presentaciones'));
 
         }catch (\Exception $ex){
 

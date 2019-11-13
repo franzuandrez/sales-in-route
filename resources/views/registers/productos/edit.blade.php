@@ -21,8 +21,20 @@
 
                             <div class="field">
                                 <label>Marca</label>
-                                <input type="text" name="id_marca" placeholder="Marca del Producto" value="{{$productos->id_marca}}">
+                                <select  name="id_marca"  class="ui search dropdown">
+                                    @foreach($marcas as $marca)
+
+                                                @if($marca->id_marca == $productos->id_marca)
+                                                    <option value="{{$marca->id_marca}}" selected>{{$marca->descripcion}}</option>
+                                                    @continue
+
+                                                @else
+                                                     <option value="{{$marca->id_marca}}">{{$marca->descripcion}}</option>
+                                                @endif
+                                    @endforeach
+                                </select>
                             </div>
+
 
                             <div class="field">
                                 <label>Color</label>
@@ -32,19 +44,52 @@
                         <div class="three fields">
                             <div class="field">
                                 <label>Empresa</label>
-                                <input type="text" name="id_empresa" placeholder="Empresa" value="{{$productos->id_empresa}}">
+                                <select name="id_empresa" class="ui search dropdown">
+                                    @foreach($empresas as $empresa)
 
+                                        @if($empresa->id_empresa == $productos->id_empresa)
+                                            <option value="{{$empresa->id_empresa}}" selected>{{$empresa->descripcion}}</option>
+                                            @continue
+
+                                        @else
+                                            <option value="{{$empresa->id_empresa}}" >{{$empresa->descripcion}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
-
                             <div class="field">
                                 <label>Unidad</label>
-                                <input type="text" name="id_unidad" placeholder="Unidad" value="{{$productos->id_unidad}}">
+                                <select name="id_unidad" class="ui search dropdown">
+                                    @foreach($unidades as $unidad)
+
+                                        @if($unidad->id_unidad == $productos->id_unidad)
+                                            <option value="{{$unidad->id_unidad}}" selected>{{$unidad->descripcion}}</option>
+                                            @continue
+
+                                        @else
+                                            <option value="{{$unidad->id_unidad}}">{{$unidad->descripcion}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="field">
                                 <label>Presentacion</label>
-                                <input type="text" name="id_presentacion" placeholder="Presentacion" value="{{$productos->id_presentacion}}">
+                                <select name="id_presentacion" class="ui search dropdown">
+                                    @foreach($presentaciones as $presentacion)
+
+                                        @if($presentacion->id_presentacion == $productos->id_presentacion)
+                                            <option value="{{$presentacion->id_presentacion}}" selected>{{$presentacion->descripcion}}</option>
+                                            @continue
+
+                                        @else
+                                            <option value="{{$presentacion->id_presentacion}}" >{{$presentacion->descripcion}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
+
+
 
                         </div>
 

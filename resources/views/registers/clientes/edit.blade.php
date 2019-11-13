@@ -34,11 +34,22 @@
 
                                 </div>
 
+
+
                                 <div class="field">
                                     <label>Tipo Cliente</label>
-                                    <input type="text" name="id_tipo_cliente" placeholder="Tipo de Cliente" value="{{$clientes->id_tipo_cliente}}">
+                                    <select name="id_tipo_cliente" class="ui search dropdown">
+                                        @foreach($categoria_clientes as $categoria_cliente)
 
+                                            @if($categoria_cliente->id_categoria_cliente == $clientes->id_tipo_cliente)
+                                                <option value="{{$categoria_cliente->id_categoria_cliente}}" selected>{{$categoria_cliente->descripcion}}</option>
+                                                @continue
 
+                                            @else
+                                                <option value="{{$categoria_cliente->id_categoria_cliente}}" >{{$categoria_cliente->descripcion}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
 

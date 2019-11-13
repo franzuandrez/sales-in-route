@@ -23,10 +23,16 @@
 
                                 </div>
                                 <div class="field">
-                                    <label>Codigo Pais</label>
-                                    <input type="text" name="id_pais" placeholder="Codigo Postal Pais">
+                                    <label>Pais</label>
+                                    <select name="id_pais" class="ui search dropdown">
+                                        @foreach($paises as $pais)
 
+                                                <option value="{{$pais->id_pais}}">{{$pais->descripcion}}</option>
+
+                                        @endforeach
+                                    </select>
                                 </div>
+
 
                             </div>
 

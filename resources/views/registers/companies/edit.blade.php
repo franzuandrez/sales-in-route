@@ -23,10 +23,22 @@
 
                         </div>
                         <div class="field">
-                            <label>Codigo Pais</label>
-                            <input type="text" name="id_pais" placeholder="Codigo Postal Pais" value="{{$companies->id_pais}}">
+                            <label>Pais</label>
+                            <select name="id_pais" class="ui search dropdown">
+                                @foreach($paises as $pais)
 
+                                    @if($pais->id_pais == $companies->id_pais)
+                                        <option value="{{$pais->id_pais}}" selected>{{$pais->descripcion}}</option>
+                                        @continue
+
+                                    @else
+                                        <option value="{{$pais->id_pais}}">{{$pais->descripcion}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
                         </div>
+
+
 
                     </div>
 

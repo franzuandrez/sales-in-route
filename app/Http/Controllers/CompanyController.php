@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Empresa;
+use App\Pais;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 class CompanyController extends Controller
@@ -18,6 +19,7 @@ class CompanyController extends Controller
         $sortField = $request->get('field') == null ? 'username' : $request->get('field');
 
         $companies = Empresa::get();
+
 
         if($request->ajax()){
             return view('registers.companies.ajax',compact('search','sort','sortField','companies'));
@@ -36,7 +38,8 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        return view('registers.companies.create');
+        $paises =   Pais::get();
+        return view('registers.companies.create',compact('paises'));
     }
 
     /**
@@ -95,11 +98,13 @@ class CompanyController extends Controller
     public function edit($id)
     {
 
+
         try{
 
+            $paises =   Pais::get();
             $companies = Empresa::findOrFail($id);
 
-            return view('registers.companies.edit',compact('companies'));
+            return view('registers.companies.edit',compact('companies','paises'));
 
         }catch (\Exception $ex){
 

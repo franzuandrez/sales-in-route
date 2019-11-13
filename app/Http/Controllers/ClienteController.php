@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CategoriaCliente;
 use App\Cliente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -42,7 +43,8 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view('registers.clientes.create');
+        $categoria_clientes= CategoriaCliente::get();
+        return view('registers.clientes.create',compact('categoria_clientes'));
     }
 
     /**
@@ -97,11 +99,12 @@ class ClienteController extends Controller
     public function edit($id)
     {
 
-        try{
 
+        try{
+            $categoria_clientes = CategoriaCliente::get();
             $clientes = Cliente::findOrFail($id);
 
-            return view('registers.clientes.edit',compact('clientes'));
+            return view('registers.clientes.edit',compact('categoria_clientes','clientes'));
 
         }catch (\Exception $ex){
 

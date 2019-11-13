@@ -23,9 +23,12 @@
 
                             <div class="field">
                                 <label>Marca</label>
-                                <input type="text" name="id_marca" placeholder="Marca del Producto">
+                                <select  name="id_marca"  class="ui search dropdown">
+                                    @foreach($marcas as $marca)
+                                            <option value="{{$marca->id_marca}}">{{$marca->descripcion}}</option>
+                                    @endforeach
+                                </select>
                             </div>
-
                             <div class="field">
                                 <label>Color</label>
                                 <input type="text" name="color" placeholder="Color del Producto">
@@ -34,18 +37,34 @@
                         <div class="three fields">
                             <div class="field">
                                 <label>Empresa</label>
-                                <input type="text" name="id_empresa" placeholder="Empresa">
-
+                                <select name="id_empresa" class="ui search dropdown">
+                                    @foreach($empresas as $empresa)
+                                            <option value="{{$empresa->id_empresa}}" >{{$empresa->descripcion}}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="field">
                                 <label>Unidad</label>
-                                <input type="text" name="id_unidad" placeholder="Unidad">
+                                <select name="id_unidad" class="ui search dropdown">
+                                    @foreach($unidades as $unidad)
+
+                                            <option value="{{$unidad->id_unidad}}">{{$unidad->descripcion}}</option>
+
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="field">
                                 <label>Presentacion</label>
-                                <input type="text" name="id_presentacion" placeholder="Presentacion">
+                                <select name="id_presentacion" class="ui search dropdown">
+                                    @foreach($presentaciones as $presentacion)
+
+
+                                            <option value="{{$presentacion->id_presentacion}}" >{{$presentacion->descripcion}}</option>
+
+                                    @endforeach
+                                </select>
                             </div>
 
                         </div>

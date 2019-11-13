@@ -20,7 +20,6 @@ class EmpresaController extends Controller
         $sortField = $request->get('field') == null ? 'username' : $request->get('field');
 
         $empresa = Empresa::get();
-        dd($empresa);
 
         if($request->ajax()){
             return view('registers.empresa.ajax',compact('search','sort','sortField','empresa'));
