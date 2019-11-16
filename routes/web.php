@@ -14,6 +14,10 @@
 Route::get('/', function () {
     return view('dashboard');
 });
+
+Route::get('app',function (){
+   return view('welcome');
+});
 /*EMPRESA*/
 Route::get('/companies/home','CompanyController@index')->name('Company.Index');
 Route::get('registers/companies/create','CompanyController@create')->name('Register.Company.Create');
@@ -117,6 +121,24 @@ Route::get('/productos/home','ProductoController@index')->name('Producto.Index')
 
 
 
-//Route::get('/usuarios/home','UserController@index')->name('Usuario.Index');
+Route::get('sistema/users','UserController@index')->name('sistema.users.index');
+Route::get('sistema/users/create','UserController@create')->name('sistema.users.create');
+Route::post('sistema/users/create','UserController@store')->name('sistema.users.store');
+Route::get('sistema/users/{id}/edit','UserController@edit')->name('sistema.users.edit');
+Route::patch('sistema/users/{id}','UserController@update')->name('sistema.users.update');
+Route::get('sistema/users/{id}','UserController@show')->name('sistema.users.show');
+
+Route::get('sistema/roles','RolController@index')->name('sistema.roles.index');
+Route::get('sistema/roles/create','RolController@create')->name('sistema.roles.create');
+Route::post('sistema/roles/create','RolController@store')->name('sistema.roles.store');
+Route::get('sistema/roles/{id}/edit','RolController@edit')->name('sistema.roles.edit');
+Route::patch('sistema/roles/{id}','RolController@update')->name('sistema.roles.update');
+Route::get('sistema/roles/{id}','RolController@show')->name('sistema.roles.show');
+
+
+
+
+
+
 
 
