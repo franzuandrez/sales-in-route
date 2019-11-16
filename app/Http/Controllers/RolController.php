@@ -75,7 +75,7 @@ class RolController extends Controller
     {
 
 
-        $role = Role::findOrFail($Uid);
+        $role = Role::findOrFail($id);
 
 
 

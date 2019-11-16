@@ -131,4 +131,8 @@ Route::get('sistema/roles/{id}','RolController@show')->name('sistema.roles.show'
 
 
 
+Route::get('logout','Auth\LoginController@logout')->name('logout');
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
