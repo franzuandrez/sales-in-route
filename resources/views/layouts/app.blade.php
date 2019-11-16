@@ -1,4 +1,6 @@
-<!doctype html>
+@if( \Auth::user())
+
+    <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -23,54 +25,71 @@
         <a class="item" href="{{url('/')}}">
             <img src="https://img.icons8.com/bubbles/50/000000/business-man-product-box.png">
         </a>
-        <div class="ui dropdown item">
-            <i class="file  icon"> </i>
-            Registro
-            <i class="dropdown icon"></i>
-            <div class="menu">
-                <a class="item" href="{{route('Company.Index')}}" > <i class="warehouse icon"></i>
-                    Sucursales</a>
-                <a class="item"href="{{route('Producto.Index')}}" > <i class="boxes icon"></i>Productos</a>
-
-                <a class="item"   href="{{route('Proveedor.Index')}}" ><i class="users icon"></i>Proveedores</a>
-                <a class="item"  href="{{route('Cliente.Index')}}"     ><i class="child icon"></i> Clientes</a>
-                <a class="item"  href="{{route('Marca.Index')}}"     ><i class="copyright icon"></i> Marcas</a>
-                <a class="item"  href="{{route('Permission.Index')}}"     ><i class="copyright icon"></i> Permisos</a>
-                <a class="item"  href="{{route('Pais.Index')}}"><i class="flag icon"></i> Paises</a>
-                <a class="item"  href="{{route('Rol.Index')}}"><i class="user plus icon"></i> Roles</a>
-                <a class="item"  href="{{route('Unidad.Index')}}"><i class="clipboard list icon"></i> Unidades</a>
-                <a class="item"  href="{{route('Presentacion.Index')}}"><i class="product hunt  icon"></i> Presentacion</a>
-                <a class="item"  href="{{route('Categoria_Cliente.Index')}}"><i class="handshake  icon"></i> Categoria Clientess</a>
-
-
-            </div>
-        </div>
-        <div class="ui dropdown item">
-            <i class="industry  icon"> </i>
-            Reportes
-            <i class="dropdown icon"></i>
-            <div class="menu">
-                <a class="item"><i class=" th icon"></i>Kardex</a>
-            </div>
-        </div>
-        <div class="ui dropdown item">
-            <i class="cogs  icon"> </i>
-            Sistema
-            <i class="dropdown icon"></i>
-            <div class="menu">
-                <a class="item"   href="{{url('sistema/users')}}"   ><i class=" users icon"></i>
-                    Usuarios</a>
-                <a class="item"   href="{{url('sistema/roles')}}"   ><i class=" wrench icon"></i>
-                    Roles</a>
-            </div>
-        </div>
-        <div class="right menu">s
+        @can('registro')
             <div class="ui dropdown item">
-                <img src="https://semantic-ui.com/images/avatar/large/steve.jpg">
+                <i class="file  icon"> </i>
+                Registro
                 <i class="dropdown icon"></i>
                 <div class="menu">
-                    <a class="item"><i class=" user icon"></i>Ver Perfil</a>
-                    <a class="item"><i class=" sign-out icon"></i>Cerrar Sesión</a>
+                    @can('sucursales')
+                        <a class="item" href="{{route('Company.Index')}}"> <i class="warehouse icon"></i>
+                            Sucursales</a>
+                    @endcan
+                    @can('productos')
+                        <a class="item" href="{{route('Producto.Index')}}"> <i class="boxes icon"></i>Productos</a>
+                    @endcan
+                    @can('proveedores')
+                        <a class="item" href="{{route('Proveedor.Index')}}"><i class="users icon"></i>Proveedores</a>
+                    @endcan
+                    @can('clientes')
+                        <a class="item" href="{{route('Cliente.Index')}}"><i class="child icon"></i> Clientes</a>
+                    @endcan
+                    @can('marcas')
+                        <a class="item" href="{{route('Marca.Index')}}"><i class="copyright icon"></i> Marcas</a>
+                    @endcan
+                    @can('cat_proveedores')
+                        <a class="item"><i class="list icon"></i>Categoria Proveedores</a>
+                    @endcan
+
+                </div>
+            </div>
+        @endcan
+        @can('reportes')
+            <div class="ui dropdown item">
+                <i class="industry  icon"> </i>
+                Reportes
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    @can('kardex')
+                        <a class="item"><i class=" th icon"></i>Kardex</a>
+                    @endcan
+                </div>
+            </div>
+        @endcan
+        @can('sistema')
+            <div class="ui dropdown item">
+                <i class="cogs  icon"> </i>
+                Sistema
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    @can('usuarios')
+                        <a class="item" href="{{url('sistema/users')}}"><i class=" users icon"></i>
+                            Usuarios</a>
+                    @endcan
+                    @can('roles')
+                        <a class="item" href="{{url('sistema/roles')}}"><i class=" wrench icon"></i>
+                            Roles</a>
+                    @endcan
+                </div>
+            </div>
+        @endcan
+        <div class="right menu">
+            <div class="ui dropdown item">
+                <img src="https://semantic-ui.com/images/avatar/large/steve.jpg">
+                <i class="dropdown icon"></i>{{\Auth::user()->username}}
+                <div class="menu">
+
+                    <a class="item" href="{{route('logout')}}"><i class=" sign-out icon"></i>Cerrar Sesión</a>
                 </div>
             </div>
         </div>
@@ -82,7 +101,6 @@
     @include('components.error-alert')
     @yield('content')
 </div>
-
 
 
 <script
@@ -101,7 +119,7 @@
 
 
     $(document)
-        .ready(function() {
+        .ready(function () {
 
             // fix main menu to page on passing
             $('.main.menu').visibility({
@@ -131,3 +149,7 @@
 </body>
 
 </html>
+
+@else
+    @include('welcome')
+@endif
