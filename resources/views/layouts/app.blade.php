@@ -44,12 +44,29 @@
                     @can('clientes')
                         <a class="item" href="{{route('Cliente.Index')}}"><i class="child icon"></i> Clientes</a>
                     @endcan
-                    @can('marcas')
-                        <a class="item" href="{{route('Marca.Index')}}"><i class="copyright icon"></i> Marcas</a>
-                    @endcan
+
                     @can('cat_proveedores')
                         <a class="item"><i class="list icon"></i>Categoria Proveedores</a>
                     @endcan
+
+
+                    @can('marcas')
+                            <a class="item"  href="{{route('Marca.Index')}}"     ><i class="copyright icon"></i> Marcas</a>
+                    @endcan
+
+                        @can('unidad')
+                            <a class="item"  href="{{route('Unidad.Index')}}"><i class="clipboard list icon"></i> Unidades</a>
+                        @endcan
+                        @can('presentacion')
+                            <a class="item"  href="{{route('Presentacion.Index')}}"><i class="product hunt  icon"></i> Presentacion</a>
+                        @endcan
+                        @can('pais')
+                            <a class="item"  href="{{route('Pais.Index')}}"><i class="product hunt  icon"></i> Pais</a>
+                        @endcan
+                        @can('categoria_cliente')
+                            <a class="item"  href="{{route('CategoriaCliente.Index')}}"><i class="product hunt  icon"></i> Categoria Cliente</a>
+                        @endcan
+
 
                 </div>
             </div>
@@ -72,14 +89,13 @@
                 Sistema
                 <i class="dropdown icon"></i>
                 <div class="menu">
-                    @can('usuarios')
+
                         <a class="item" href="{{url('sistema/users')}}"><i class=" users icon"></i>
                             Usuarios</a>
-                    @endcan
-                    @can('roles')
+
                         <a class="item" href="{{url('sistema/roles')}}"><i class=" wrench icon"></i>
                             Roles</a>
-                    @endcan
+
                 </div>
             </div>
         @endcan

@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="{{asset('css/font-awesome.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap-select.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/AdminLTE.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/semantic.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     @yield('styles')
 </head>
@@ -29,13 +31,17 @@
         </div>
     </div>
 </nav>
+
 <div class="container">
-    <div class="row">
-        @yield('content')
-    </div>
+
+
+            @yield('content')
+
+
 </div>
 </body>
 <script src="{{asset('js/jQuery-2.1.4.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/bootstrap-select.min.js')}}"></script>
+<script src="{{asset('js/semantic.js')}}"></script>
 @yield('scripts')
